@@ -1,0 +1,7 @@
+checkpoint
+*.index
+*.meta
+cnn_session-*
+mdc_session-*
+*.bin
+*.dic
