@@ -51,8 +51,6 @@ RUN cd word2vec-calc ; make ; cp word2vec-calc /usr/local/bin
 RUN git clone https://github.com/naoa/string-splitter.git
 RUN cd string-splitter ; make ; cp string-splitter /usr/local/bin
 
-# VOLUME ["/var/lib/word2vec"]
-
 # Clean up
 RUN rm -rf mecab-0.996.tar.gz*
 RUN rm -rf mecab-ipadic-2.7.0-20070801.tar.gz*
