@@ -22,7 +22,7 @@ echo alias word2vec-bash=\"nvidia-docker run --rm -v /root/docker-for-ai/word2ve
 echo alias word2vec=\"nvidia-docker run --rm -v /root/docker-for-ai/word2vec/data:/var/lib/word2vec -a stdin -a stdout -a stderr -i 29koji/word2vec word2vec\" >> ~/.bashrc
 echo alias word2vec-distance=\"nvidia-docker run --rm -v /root/docker-for-ai/word2vec/data:/var/lib/word2vec -a stdin -a stdout -a stderr -it 29koji/word2vec distance /var/lib/word2vec/jawiki.bin\" >> ~/.bashrc
 echo alias word2vec-calc=\"nvidia-docker run --rm -v /root/docker-for-ai/word2vec/data:/var/lib/word2vec -a stdin -a stdout -a stderr -i 29koji/word2vec word2vec-calc\" >> ~/.bashrc
-echo alias mecab-NEologd=\"nvidia-docker run --rm -v /root/docker-for-ai/word2vec/data:/var/lib/word2vec -a stdin -a stdout -a stderr -it 29koji/word2vec mecab\" >> ~/.bashrc
+echo alias mecab-NEologd=\"nvidia-docker run --rm -v /root/docker-for-ai/word2vec/data:/var/lib/word2vec -a stdin -a stdout -a stderr -i 29koji/word2vec mecab\" >> ~/.bashrc
 source ~/.bashrc
 ```
 
