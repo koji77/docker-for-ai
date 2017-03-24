@@ -13,7 +13,7 @@
 | WordNet | 3.0-21 ||
 | glib2 | 2.36.3-5 ||
 | gflags | 1.3-7 ||
-| word2vec-calc |https://github.com/naoa/word2vec-calc|word2vecの学習済モデルを使用してベクトルの加減算ができるプログラム|
+| word2vec-calc |https://github.com/naoa/word2vec-calc |word2vecの学習済モデルを使用してベクトルの加減算ができるプログラム|
 
 ## 事前作業
 *  ホストマシンにエイリアスを登録する。
