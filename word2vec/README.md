@@ -36,7 +36,7 @@ source ~/.bashrc
 
 ## Dockerイメージ作成
 ``` bash
-cd /root/docker-for-ai-for-ai/word2vec
+cd /root/docker-for-ai/word2vec
 nvidia-docker build -t 29koji/word2vec .
 ```
 

@@ -24,7 +24,7 @@ source ~/.bashrc
 
 ## Dockerイメージ作成
 ``` bash
-cd /root/docker-for-ai-for-ai/termextract
+cd /root/docker-for-ai/termextract
 nvidia-docker build -t 29koji/termextract .
 ```
 
