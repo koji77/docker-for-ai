@@ -41,7 +41,7 @@ RUN cd word2vec ; make ; \
     cp demo-classes.sh /usr/local/bin ; cp demo-phrase-accuracy.sh /usr/local/bin ; \
     cp demo-phrases.sh /usr/local/bin ; cp demo-word-accuracy.sh /usr/local/bin ; \
     cp demo-word.sh /usr/local/bin ; cp questions-phrases.txt /usr/local/bin ; \
-    cp questions-words.txt /usr/local/bin ;
+    cp questions-words.txt /usr/local/bin
 
 # word2vec-calc
 RUN git clone https://github.com/naoa/word2vec-calc.git
@@ -59,3 +59,10 @@ RUN rm -rf word2vec.local.tgz*
 # Register dictionary for mecab
 ADD mecab-user-dict-seed-20170213.dic /usr/local/lib/mecab/dic/
 RUN echo "userdic = /usr/local/lib/mecab/dic/mecab-user-dict-seed-20170213.dic" >> /usr/local/etc/mecabrc
+
+# Set up word2vec_boostpython
+RUN curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -f get-pip.py
+RUN yum -y install python-devel boost-devel unzip tkinter
+RUN pip --no-cache-dir install matplotlib numpy scipy sklearn pandas Pillow
+ADD word2vec_boostpython /var/lib/word2vec_boostpython/
+RUN cd /var/lib/word2vec_boostpython ; python setup.py install
