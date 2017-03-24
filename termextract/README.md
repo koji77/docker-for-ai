@@ -16,7 +16,7 @@
 ## 事前作業
 *  ホストマシンにエイリアスを登録する。
 ``` bash
-echo alias termextract-bash=\"nvidia-docker run --rm -v /root/docker-for-ai/termextract/data:/var/lib/termextract -a stdin -a stdout -a stderr -i 29koji/termextract /bin/bash\" >> ~/.bashrc
+echo alias termextract-bash=\"nvidia-docker run --rm -v /root/docker-for-ai/termextract/data:/var/lib/termextract -a stdin -a stdout -a stderr -it 29koji/termextract /bin/bash\" >> ~/.bashrc
 echo alias termextract=\"nvidia-docker run --rm -v /root/docker-for-ai/termextract/data:/var/lib/termextract -a stdin -a stdout -a stderr -i 29koji/termextract termextract_mecab.pl\" >> ~/.bashrc
 echo alias mecab-ipa=\"nvidia-docker run --rm -v /root/docker-for-ai/termextract/data:/var/lib/termextract -a stdin -a stdout -a stderr -i 29koji/termextract mecab\" >> ~/.bashrc
 source ~/.bashrc
@@ -29,13 +29,36 @@ nvidia-docker build -t 29koji/termextract .
 ```
 
 ## 使い方
+
+### MeCabのIPAdicでの解析結果
+``` bash
+echo "印刷用紙を複合機で印刷する。" | mecab-ipa
+印刷    名詞,サ変接続,*,*,*,*,印刷,インサツ,インサツ
+用紙    名詞,一般,*,*,*,*,用紙,ヨウシ,ヨーシ
+を      助詞,格助詞,一般,*,*,*,を,ヲ,ヲ
+複合    名詞,サ変接続,*,*,*,*,複合,フクゴウ,フクゴー
+機      名詞,接尾,一般,*,*,*,機,キ,キ
+で      助詞,格助詞,一般,*,*,*,で,デ,デ
+印刷    名詞,サ変接続,*,*,*,*,印刷,インサツ,インサツ
+する    動詞,自立,*,*,サ変・スル,基本形,する,スル,スル
+。      記号,句点,*,*,*,*,。,。,。
+EOS
+```
+
+### TermExtractによる専門用語(キーワード)自動抽出結果
 ``` bash
 # echoまたはcatのテキスト出力とパイプで結合する。
 # 入力形式はUTF8の文字コードのテキストのみ
 # 1:専門用語+重要度、2:専門用語のみ、3:カンマ区切り、4:IPAdic辞書形式(コスト推定)、5:IPAdic辞書形式(文字列長)
 echo "印刷用紙を複合機で印刷する。" | termextract
+複合機   1.41
+印刷用紙 1.41
+
 echo "印刷用紙を複合機で印刷する。" | termextract --output 4
+複合機,1285,1285,7336,名詞,一般,*,*,*,*,複合機,*,*,ByTermExtractEst
+印刷用紙,1285,1285,7336,名詞,一般,*,*,*,*,印刷用紙,*,*,ByTermExtractEst
 ```
+
 ### 自動コスト推定した辞書の追加
 ``` bash
 termextract-bash
