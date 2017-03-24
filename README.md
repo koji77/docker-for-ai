@@ -29,5 +29,7 @@ git commit -m "first commit"
 # git remote add origin https://github.com/koji77/docker-for-ai.git
 # git config http.postBuffer 524288000
 # git push -u origin master
+# 全ての変更を元に戻す。
+# git checkout .
 git push
 ```
