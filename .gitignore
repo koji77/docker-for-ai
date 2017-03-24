@@ -5,3 +5,5 @@ cnn_session-*
 mdc_session-*
 *.bin
 *.dic
+stat.db
+comb.db
