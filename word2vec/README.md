@@ -47,41 +47,37 @@ nvidia-docker build -t 29koji/word2vec .
 word2vec-distance
 # Enter word or sentence (EXIT to break): 首相
 
-# 足し引き
+# 加減算
 # 男 → 王様の関係を女に適用したものは何か？(期待値: 女王)
 echo "王様 - 男 + 女" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 # フランス → パリの関係を日本に適用したものは何か？(期待値: 東京)
 echo "パリ - フランス + 日本" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 
-# word2vec可視化環境構築下準備
+# グラフ出力
+word2vec-bash
+cd /var/lib/word2vec/mycorpus
+python vis.py
+# query: 曹操, 司馬懿, 荀彧, 劉備, 諸葛亮, 関羽, 張飛
+exit
+mv /root/docker-for-ai/word2vec/data/scatter-*.png /home/ubuntu/.
+
+# <参考>word2vec可視化環境構築下準備
 word2vec-bash
 cd /var/lib/word2vec
 wget -P /tmp https://github.com/nishio/word2vec_boostpython/archive/master.zip
 unzip /tmp/master.zip
-cd word2vec_boostpython-master
+mv word2vec_boostpython-master word2vec_boostpython
+cd word2vec_boostpython
 # vi setup.py
 
 cd /var/lib/word2vec
 wget -P /tmp https://github.com/nishio/mycorpus/archive/master.zip
 unzip /tmp/master.zip.1
-cd mycorpus-master
+mv mycorpus-master mycorpus
+cd mycorpus
 # vi vis.py
 
 exit
-
-# word2vec可視化環境構築
-word2vec-bash
-curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm -f get-pip.py
-yum -y install python-devel boost-devel unzip tkinter
-pip --no-cache-dir install matplotlib numpy scipy sklearn pandas Pillow
-
-cd /var/lib/word2vec/word2vec_boostpython-master
-python setup.py install
-
-# グラフ出力
-cd /var/lib/word2vec/mycorpus-master
-python vis.py
-# query: 曹操, 司馬懿, 荀彧, 劉備, 諸葛亮, 関羽, 張飛
 ```
 
 ## <参考>MeCab新語辞書: mecab-ipadic-NEologdの作成方法
