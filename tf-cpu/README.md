@@ -13,7 +13,7 @@ docker build --tag="29koji/tf-cpu" .
 
 ## Dockerコンテナ作成&実行
 ``` bash
-docker run -d --name tf-cpu -p 8888:8888 -p 6006:6006 -v ~/docker-for-ai/tf-cpu/data/notebooks:/notebooks -e PASSWORD=pass 29koji/tf-cpu
+docker run -d --name tf-cpu -p 8888:8888 -p 6006:6006 -v /root/docker-for-ai/tf-cpu/data/notebooks:/notebooks -e PASSWORD=pass 29koji/tf-cpu
 ```
 
 ## Jupyterアクセス

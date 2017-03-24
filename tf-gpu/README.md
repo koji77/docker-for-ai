@@ -15,7 +15,7 @@ nvidia-docker build --tag="29koji/tf-gpu" .
 
 ## Dockerコンテナ作成&実行
 ``` bash
-nvidia-docker run -d --name tf-gpu -p 8888:8888 -p 6006:6006 -v ~/docker-for-ai/tf-gpu/data/notebooks:/notebooks -e PASSWORD=pass 29koji/tf-gpu
+nvidia-docker run -d --name tf-gpu -p 8888:8888 -p 6006:6006 -v /root/docker-for-ai/tf-gpu/data/notebooks:/notebooks -e PASSWORD=pass 29koji/tf-gpu
 ```
 
 ## Jupyterアクセス
