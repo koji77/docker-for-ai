@@ -12,6 +12,7 @@ nvidia-docker build -t 29koji/ruby-dev .
 
 # Wikipedia日本語版コーパスの作成〜学習済モデル作成・配置
 ``` bash
+# Dockerコンテナ作成 & 実行(Dockerfileの設定により、/bin/bashが起動する。)
 nvidia-docker run --rm -v /root/docker-for-ai/ruby-dev/data:/var/lib/rubydev -it 29koji/ruby-dev
 
 # Wikipedia日本語ページののXMLデータをダウンロード
@@ -24,6 +25,7 @@ cd /var/lib/rubydev
 time wp2txt --input-file jawiki-latest-pages-articles.xml.bz2
 
 # 不要な文字を削除
+# NFKC正規化については考慮していないので要追加検討
 time python datasetup.py jawiki-latest-pages-articles.xml-*.txt
 
 # 一つのファイルにまとめる。
