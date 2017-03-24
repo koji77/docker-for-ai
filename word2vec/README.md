@@ -60,8 +60,10 @@ python vis.py
 # query: 曹操, 司馬懿, 荀彧, 劉備, 諸葛亮, 関羽, 張飛
 exit
 mv /root/docker-for-ai/word2vec/data/scatter-*.png /home/ubuntu/.
+```
 
-# <参考>word2vec可視化環境構築下準備
+## <参考>word2vec可視化環境構築下準備
+``` bash
 word2vec-bash
 cd /var/lib/word2vec
 wget -P /tmp https://github.com/nishio/word2vec_boostpython/archive/master.zip
