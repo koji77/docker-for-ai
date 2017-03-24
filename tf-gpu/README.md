@@ -1,6 +1,6 @@
 # tf-gpu: Tensorflow実行環境(GPU版)
 
-## 動作環境
+## コンテナの構成
 * OS: Ubuntu: 16.04
 * Python: 3.5
 * CUDA: 8.0

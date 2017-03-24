@@ -1,6 +1,6 @@
 # tf-cpu: Tensorflow実行環境(CPU版)
 
-## 動作環境
+## コンテナの構成
 * OS: Ubuntu: 16.04
 * Python: 3.5
 * Tensorfolw: 0.12.1
