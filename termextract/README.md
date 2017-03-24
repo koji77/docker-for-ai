@@ -18,7 +18,7 @@
 ``` bash
 echo alias termextract-bash=\"nvidia-docker run --rm -v /root/docker-for-ai/termextract/data:/var/lib/termextract -a stdin -a stdout -a stderr -i 29koji/termextract /bin/bash\" >> ~/.bashrc
 echo alias termextract=\"nvidia-docker run --rm -v /root/docker-for-ai/termextract/data:/var/lib/termextract -a stdin -a stdout -a stderr -i 29koji/termextract termextract_mecab.pl\" >> ~/.bashrc
-echo alias mecab=\"nvidia-docker run --rm -v /root/docker-for-ai/termextract/data:/var/lib/termextract -a stdin -a stdout -a stderr -i 29koji/termextract mecab\" >> ~/.bashrc
+echo alias mecab-ipa=\"nvidia-docker run --rm -v /root/docker-for-ai/termextract/data:/var/lib/termextract -a stdin -a stdout -a stderr -i 29koji/termextract mecab\" >> ~/.bashrc
 source ~/.bashrc
 ```
 
