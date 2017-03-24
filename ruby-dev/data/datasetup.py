@@ -5,6 +5,7 @@
 import sys
 import re
 import glob
+import unicodedata
 
 # コマンドライン引数を格納したリストの取得
 argvs = sys.argv
@@ -28,5 +29,7 @@ for i, v in enumerate(argvs):
             # dst = re.sub(r'\s+','\u0020', dst)
             # 書き込みモードで開く(新規作成)
         with open(f + '_cleanuped.txt', 'w') as fd:
+            # NFKC正規化
+            dst = unicodedata.normalize('NFKC', dst)
             fd.write(dst)
             print(f + '_cleanuped.txt is successfully created')

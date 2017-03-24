@@ -25,7 +25,6 @@ cd /var/lib/rubydev
 time wp2txt --input-file jawiki-latest-pages-articles.xml.bz2
 
 # 不要な文字を削除
-# NFKC正規化については考慮していないので要追加検討
 time python datasetup.py jawiki-latest-pages-articles.xml-*.txt
 
 # 一つのファイルにまとめる。
