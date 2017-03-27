@@ -28,21 +28,18 @@ for i, v in enumerate(argvs):
             # utf-8以外の文字を潰す。
             # str文字列に対してdecode()メソッドを呼び出すとunicode文字列が得られる。
             dst = src.decode('utf-8', 'ignore')
-            #dst = dst.encode('utf-8')
             # ハイフネーションを潰す。(紙のテキストではあり得るがWebページではないので実行しない。)
             # dst = re.sub('-[\r\n]+', '', dst)
             # 改行・改頁を潰す。
             dst = re.sub('[\r\n\x0c]+', '', dst)
             # 項番を潰す。
             dst = re.sub('\d*\.\d*\s', '', dst)
+            # URL参照を潰す。
             dst=re.sub('http?://[\w/:%#\$&\?\(\)~\.=\+\-…]+', "", dst)
             dst=re.sub('https?://[\w/:%#\$&\?\(\)~\.=\+\-…]+', "", dst)
             # 統一的な題目を潰す。
             dst = re.sub(u'\[編集\]\s|\[隠す\]\s|\[非表示\]\s|\[ヘルプ\]\s|\[隠す\]\s|目次\s|詳細は|を参照|脚注\s|参考書籍\s|関連項目\s|関連作品\s|関連書籍\s|その他\s|外部リンク|表\s話\s編\s歴\s', u'', dst)
             # 記号を空白に置き換える。
-            # dst = re.sub('\.|,|\¥|!|\"|\'|#|\$|%|&|\+|\*|;|:|{|}|\?|~|\^|_|\||/|<|>|@|\(|\)|\[|\]|==|\.\.\.+', '', dst)
-            # dst = re.sub('\.|\,|\¥|\!|\"|\'|\#|\$|%|&|\+|\*|;|\:|\{|\}|\?|~|\^|_|\\|/|\<|\>|\@|(|)|\[|\]|\=|\-', '', dst)
-            # dst = re.sub('.|,|¥|!|\"|\'|#|$|%|&|+|*|;|:|{|}|?|~|^|_|\|/|<|>|@|(|)|[|]|=|-', '', dst)
             dst = re.sub('[\.|\,|\¥|\!|\"|\'|\#|\$|%|&|\+|\*|;|\:|\{|\}|\?|~|\^|_|\\|/|\<|\>|\@|(|)|\[|\]|\=|\-]', '', dst)
             # 全角記号を空白に置き換える。(除: 句点)
             dst = re.sub(u'┃|┣|━|┳|┓|・|、|「|」|『|』|（|）|《|》|【|】|［|］|〈|〉|＝|：|；|／|～|→|●|≒|]', u'', dst)
@@ -54,6 +51,5 @@ for i, v in enumerate(argvs):
         with open(f + '_cleanuped.txt', 'w') as fd:
             # NFKC正規化
             dst = unicodedata.normalize('NFKC', dst)
-            # dst = unicodedata.normalize('NFKC', unicode(dst, 'utf-8'))
             fd.write(dst.encode('utf_8'))
             print(f + '_cleanuped.txt is successfully created')
