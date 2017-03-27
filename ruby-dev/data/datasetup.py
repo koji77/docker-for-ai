@@ -26,6 +26,7 @@ for i, v in enumerate(argvs):
         with open(f, 'r') as fs:
             src = fs.read()
             # utf-8以外の文字を無視する。
+            # str文字列に対してdecode()メソッドを呼び出すとunicode文字列が得られる。
             dst = src.decode('utf-8', 'ignore')
             # ハイフネーションを空白に置き換える。(紙のテキストではあり得るがWebページではないので実行しない。)
             # dst = re.sub('-[\r\n]+', ' ', dst)
@@ -46,6 +47,6 @@ for i, v in enumerate(argvs):
         # 書き込みモードで開く(新規作成)
         with open(f + '_cleanuped.txt', 'w') as fd:
             # NFKC正規化
-            dst = unicodedata.normalize('NFKC', unicode(dst, 'utf-8'))
+            dst = unicodedata.normalize('NFKC', dst)
             fd.write(dst.encode('utf_8'))
             print(f + '_cleanuped.txt is successfully created')
