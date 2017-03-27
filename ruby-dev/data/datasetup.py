@@ -28,7 +28,7 @@ for i, v in enumerate(argvs):
             # utf-8以外の文字を潰す。
             # str文字列に対してdecode()メソッドを呼び出すとunicode文字列が得られる。
             dst = src.decode('utf-8', 'ignore')
-            dst = dst.encode('utf-8')
+            #dst = dst.encode('utf-8')
             # ハイフネーションを潰す。(紙のテキストではあり得るがWebページではないので実行しない。)
             # dst = re.sub('-[\r\n]+', '', dst)
             # 改行・改頁を潰す。
@@ -36,12 +36,12 @@ for i, v in enumerate(argvs):
             # 項番を潰す。
             dst = re.sub('\d*\.\d*\s', '', dst)
             # 統一的な題目を潰す。
-            dst = re.sub(r'\[編集\]\s|\[隠す\]\s|\[非表示\]\s|\[ヘルプ\]\s|\[隠す\]\s|目次\s|詳細は|を参照|脚注\s|参考書籍\s|関連項目\s|関連作品\s|関連書籍\s|その他\s|外部リンク\s|表\s話\s編\s歴\s', '', dst)
+            dst = re.sub(u'\[編集\]\s|\[隠す\]\s|\[非表示\]\s|\[ヘルプ\]\s|\[隠す\]\s|目次\s|詳細は|を参照|脚注\s|参考書籍\s|関連項目\s|関連作品\s|関連書籍\s|その他\s|外部リンク|表\s話\s編\s歴\s', u'', dst)
             # 記号を空白に置き換える。
             # dst = re.sub('\.|,|\¥|!|\"|\'|#|\$|%|&|\+|\*|;|:|{|}|\?|~|\^|_|\||/|<|>|@|\(|\)|\[|\]|==|\.\.\.+', '', dst)
-            dst = re.sub(r'\.|\,|\¥|\!|\"|\'|\#|\$|%|&|\+|\*|;|\:|\{|\}|\?|~|\^|_|\\|/|\<|\>|\@|(|)|\[|\]|\=|\-', '', dst)
+            dst = re.sub('\.|\,|\¥|\!|\"|\'|\#|\$|%|&|\+|\*|;|\:|\{|\}|\?|~|\^|_|\\|/|\<|\>|\@|(|)|\[|\]|\=|\-', '', dst)
             # 全角記号を空白に置き換える。(除: 句点)
-            dst = re.sub(r'┃|┣|━|┳|┓|・|、|「|」|『|』|（|）|《|》|【|】|［|］|〈|〉|＝|：|；|／|～|→|●|≒|]', '', dst)
+            dst = re.sub('┃|┣|━|┳|┓|・|、|「|」|『|』|（|）|《|》|【|】|［|］|〈|〉|＝|：|；|／|～|→|●|≒|]', '', dst)
             # 空白文字(空白、改行、改頁)が連続したら空白1つに置き換える。
             # dst = re.sub('\s+', ' ', dst)
             # 句点(。)で行を分割する。
@@ -49,6 +49,7 @@ for i, v in enumerate(argvs):
         # 書き込みモードで開く(新規作成)
         with open(f + '_cleanuped.txt', 'w') as fd:
             # NFKC正規化
-            dst = unicodedata.normalize('NFKC', unicode(dst, 'utf-8'))
+            dst = unicodedata.normalize('NFKC', dst)
+            # dst = unicodedata.normalize('NFKC', unicode(dst, 'utf-8'))
             fd.write(dst.encode('utf_8'))
             print(f + '_cleanuped.txt is successfully created')
