@@ -26,7 +26,7 @@ for i, v in enumerate(argvs):
         with open(f, 'r') as fs:
             src = fs.read()
             # utf-8以外の文字を無視する。
-            dst = src.decode('utf-8', ignore)
+            dst = src.decode('utf-8', 'ignore')
             # ハイフネーションを空白に置き換える。(紙のテキストではあり得るがWebページではないので実行しない。)
             # dst = re.sub('-[\r\n]+', ' ', dst)
             # 改行・改頁を空白に置き換える。
