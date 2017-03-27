@@ -51,13 +51,27 @@ word2vec-distance
 # 男 → 王様の関係を女に適用したものは何か？(期待値: 女王)
 echo "王様 - 男 + 女" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 # フランス → パリの関係を日本に適用したものは何か？(期待値: 東京)
-echo "パリ - フランス + 日本" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
+echo "ソフトバンク - フランス + 日本" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
+# ソフトバンク → 孫正義の関係をユニクロに適用したものは何か？(期待値: 柳井正)
+echo "孫正義 - ソフトバンク + ユニクロ" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
+# キャッチャー → ピッチャーの関係を捕手に適用したものは何か？(期待値: 投手)
+echo "ピッチャー - キャッチャー + 捕手" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 
 # グラフ出力
 word2vec-bash
-cd /var/lib/word2vec/mycorpus
-python vis.py
+cd /var/lib/word2vec/mycorpus && python vis.py
+# コンマ + スペース区切りの単語間のコサイン距離を算出
 # query: 曹操, 司馬懿, 荀彧, 劉備, 諸葛亮, 関羽, 張飛
+# コサイン距離が近い順に20個のデータを出力(デフォルトのn-bestは15)
+
+# nbest=20
+# query: 曹操
+
+# query: 投手, 捕手, 一塁手, 二塁手, 三塁手, 遊撃手, 左翼手, 中堅手, 右翼手
+# query: ピッチャー, キャッチャー, ファースト, セカンド, サード, ショート, レフト, センター, ライト
+
+# ctl + CでPythonインタプリタから抜ける。
+
 exit
 mv /root/docker-for-ai/word2vec/data/scatter-*.png /home/ubuntu/.
 ```
