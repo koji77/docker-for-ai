@@ -28,7 +28,7 @@ time wp2txt --input-file jawiki-latest-pages-articles.xml.bz2
 time python datasetup.py jawiki-latest-pages-articles.xml-*.txt
 
 # 一つのファイルにまとめる。
-# jawiki_wakati.txtのサイズ: 約5.45GB(5,446,717,943) 処理時間: 約50秒
+# jawiki.txtのサイズ: 約5.45GB(5,446,717,943) 処理時間: 約50秒
 time cat jawiki-latest-pages-articles.xml-*.txt_cleanuped.txt > jawiki.txt
 
 # 中間ファイル削除
