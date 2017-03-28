@@ -28,7 +28,7 @@ time wp2txt --input-file jawiki-latest-pages-articles.xml.bz2
 time python datasetup.py jawiki-latest-pages-articles.xml-*.txt
 
 # 一つのファイルにまとめる。
-# jawiki.txtのサイズ: 約5.04GB(5,038,336,285) 処理時間: 約24秒
+# jawiki.txtのサイズ: 約5.04GB(5,038,197,217) 処理時間: 約24秒
 time cat jawiki-latest-pages-articles.xml-*.txt_cleanuped.txt > jawiki.txt
 
 # 中間ファイル削除
@@ -39,7 +39,7 @@ rm -f jawiki-latest-pages-articles.xml.bz2
 exit
 
 # 分かちを入れる。
-# jawiki_wakati.txtのサイズ: 約5.70GB(5,698,436,282 処理時間: 約52分
+# jawiki_wakati.txtのサイズ: 約5.70GB(5,698,253,200 処理時間: 約52分
 mv /root/docker-for-ai/ruby-dev/data/jawiki.txt /root/docker-for-ai/word2vec/data/.
 word2vec-bash
 # mecabのオプション(-b)でinput bufferを拡張しないとエラー(input-buffer overflow. The line is split. use -b #SIZE option.)となる。最大値は、8,192x640=5,242,880
@@ -47,8 +47,8 @@ time cat /var/lib/word2vec/jawiki.txt | mecab -b 5242880 -Owakati > /var/lib/wor
 exit
 
 # word2vecに学習させる。
-# 単語数: 約8億語(804,798,988)
-# jawiki.binのサイズ: 約1.42GB(1,420,840,684) 処理時間: 約45分
+# 単語数: 約8億語(804,754,377)
+# jawiki.binのサイズ: 約1.42GB(1,420,814,840) 処理時間: 約45分
 time word2vec -train /var/lib/word2vec/jawiki_wakati.txt -output /var/lib/word2vec/jawiki.bin -size 200 -window 5 -negative 5 -hs 0 -sample 1e-3 -threads 8 -binary 1
 
 # 中間ファイル削除
