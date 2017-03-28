@@ -54,6 +54,7 @@ word2vec-distance
 # ベクトル演算(単語間の意味に基いて関係性を理解する。)
 # 男 → 王様の関係を女に適用したものは何か？(期待値: 女王)
 echo "王様 - 男 + 女" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
+# 男 → おじの関係を女に適用したものは何か？(期待値: おば)
 echo "おじ - 男 + 女" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 
 # フランス → パリの関係を日本に適用したものは何か？(期待値: 東京)
