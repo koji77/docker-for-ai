@@ -46,6 +46,10 @@ nvidia-docker build -t 29koji/word2vec .
 # 日本語の計算は、macかLinuxで実施
 word2vec-distance
 # Enter word or sentence (EXIT to break): 首相
+# Enter word or sentence (EXIT to break): 阿部慎之助
+# Enter word or sentence (EXIT to break): 星野仙一
+# Enter word or sentence (EXIT to break): 織田信長
+# Enter word or sentence (EXIT to break): ピカチュウ
 
 # 加減算
 # 男 → 王様の関係を女に適用したものは何か？(期待値: 女王)
