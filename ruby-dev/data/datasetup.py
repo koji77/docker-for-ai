@@ -26,7 +26,7 @@ for i, v in enumerate(argvs):
         with open(f, 'r') as fs:
             src = fs.read()
             # 行頭の「・」を潰す。(箇条書き対策)
-            src = re.sub('^/s*・', '', src)
+            src = re.sub('^\s*・', '', src)
             # utf-8以外の文字を潰す。
             # str文字列に対してdecode()メソッドを呼び出すとunicode文字列が得られる。
             dst = src.decode('utf-8', 'ignore')
