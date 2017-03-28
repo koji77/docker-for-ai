@@ -56,11 +56,14 @@ word2vec-distance
 echo "王様 - 男 + 女" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 # 男 → おじの関係を女に適用したものは何か？(期待値: おば)
 echo "おじ - 男 + 女" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
-
 # フランス → パリの関係を日本に適用したものは何か？(期待値: 東京)
 echo "パリ - フランス + 日本" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 # ソフトバンク → 孫正義の関係をユニクロに適用したものは何か？(期待値: 柳井正)
 echo "孫正義 - ソフトバンク + ユニクロ" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
+# 日本 → 安倍晋三の関係をアメリカに適用したものは何か？(期待値: トランプ)
+echo "安倍晋三 - 日本 + アメリカ" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
+# 武田信玄 → 山本勘助の関係を本田宗一郎に適用したものは何か？(期待値: 藤沢武夫)
+echo "山本勘助 - 武田信玄 + 本田宗一郎" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 # キャッチャー → ピッチャーの関係を捕手に適用したものは何か？(期待値: 投手)
 echo "ピッチャー - キャッチャー + 捕手" | word2vec-calc --file_path /var/lib/word2vec/jawiki.bin --output 1
 
