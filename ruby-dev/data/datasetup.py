@@ -54,6 +54,6 @@ for i, v in enumerate(argvs):
         # 書き込みモードで開く(新規作成)
         with open(f + '_cleanuped.txt', 'w') as fd:
             # NFKC正規化
-            dst = unicodedata.normalize('NFKC', dst)
+            # dst = unicodedata.normalize('NFKC', dst)
             fd.write(dst.encode('utf_8'))
             print(f + '_cleanuped.txt is successfully created')
