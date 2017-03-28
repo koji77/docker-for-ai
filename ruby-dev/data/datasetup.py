@@ -44,7 +44,7 @@ for i, v in enumerate(argvs):
             # dst = re.sub('[\.\,\¥\!\"\'#\$%&\+\*;\:\{\}\?~\^_\\/\<\>@()\[\]\=\-\|]', '', dst)
             # dst = re.sub('\.\.+', '', dst)
             # dst = re.sub('[/:%#\$&\?\(\)~\.=\+\-\[\]\*\|\{\}\^\'\"<>@;…]+', '', dst)
-            dst = re.sub('[/:%#$&?()~.=+-[\]*|{\}^\'\"<>@;]+', '', dst)
+            # dst = re.sub('[/:%#$&?()~.=+-[\]*|{\}^\'\"<>@;]+', '', dst)
             # 全角記号を空白に置き換える。(除: 句点)
             dst = re.sub(u'┃|┣|━|┳|┓|・|、|「|」|『|』|（|）|《|》|【|】|［|］|〈|〉|＝|：|；|／|～|→|●|≒|※|…]', u'', dst)
             # 空白文字(空白、改行、改頁)が連続したら空白1つに置き換える。
@@ -54,6 +54,6 @@ for i, v in enumerate(argvs):
         # 書き込みモードで開く(新規作成)
         with open(f + '_cleanuped.txt', 'w') as fd:
             # NFKC正規化
-            # dst = unicodedata.normalize('NFKC', dst)
+            dst = unicodedata.normalize('NFKC', dst)
             fd.write(dst.encode('utf_8'))
             print(f + '_cleanuped.txt is successfully created')
