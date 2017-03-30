@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+FROM ubuntu:16.04
 
 MAINTAINER Hiroyuki Kojima <29koji@gmail.com>
 
@@ -42,10 +42,9 @@ RUN pip3 --no-cache-dir install \
 # RUN pip --no-cache-dir install /_PIP_FILE_
 # RUN rm -f /_PIP_FILE_
 
-# Install TensorFlow GPU version.
+# Install TensorFlow CPU version.
 RUN pip3 --no-cache-dir install \
     https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.1-cp35-cp35m-linux_x86_64.whl
-#   https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.1-cp35-cp35m-linux_x86_64.whl
 # --- ~ DO NOT EDIT OR DELETE BETWEEN THE LINES --- #
 
 # RUN ln -s /usr/bin/python3 /usr/bin/python#
